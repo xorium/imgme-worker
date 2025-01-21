@@ -22,10 +22,11 @@ RUN python3.11 -m pip install --upgrade pip && \
 # NOTE: The base image comes with multiple Python versions pre-installed.
 #       It is reccommended to specify the version of Python when running your code.
 
+# Скачиваем модели в отдельный шаг
+COPY builder/download_models.py /download_models.py
+RUN python3.11 -u /download_models.py
 
 # Add src files (Worker Template)
 ADD src .
-
-RUN python3.11 -u download_models.py
 
 CMD python3.11 -u /handler.py
