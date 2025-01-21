@@ -1,9 +1,10 @@
 """ Example handler file. """
 
 import runpod
-import pulid.app_flux
 import os
 import argparse
+
+from pulid import app_flux
 
 def get_args_from_env():
     # Устанавливаем значения по умолчанию
@@ -37,12 +38,12 @@ def get_args_from_env():
         args["offload"] = True
 
     # Преобразуем словарь в объект Namespace для совместимости с argparse
-    return Namespace(**args)
+    return argparse.Namespace(**args)
 
 def init_generator():
     args = get_args_from_env()
-
-    return FluxGenerator(
+    
+    return app_flux.FluxGenerator(
         model_name=args.name,
         device=args.device,
         offload=args.offload,
