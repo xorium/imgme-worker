@@ -4,7 +4,7 @@ import runpod
 import os
 import argparse
 
-from pulid import app_flux
+import pulid.app_flux
 
 def get_args_from_env():
     # Устанавливаем значения по умолчанию
