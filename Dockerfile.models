@@ -18,4 +18,4 @@ WORKDIR /app/src
 ENV PYTHONPATH="${PYTHONPATH}:/app/src"
 
 # Скачиваем модели
-RUN python3.11 -u /app/src/pulid/download_models.py
+RUN python3.11 -u /app/src/download_models.py
