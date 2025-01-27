@@ -10,8 +10,12 @@ FROM bugfuzzer/worker-base:v1.0
 # RUN /bin/bash /setup.sh && \
 #     rm /setup.sh
 
-# Add src files (Worker Template)
-ADD src .
+# Добавляем исходный код
+ADD src /app/src
+WORKDIR /app/src
 
-# Скачиваем модели в отдельный шаг
-RUN python3.11 -u /download_models.py
+# Устанавливаем PYTHONPATH
+ENV PYTHONPATH="${PYTHONPATH}:/app/src"
+
+# Скачиваем модели
+RUN python3.11 -u /app/src/pulid/download_models.py
